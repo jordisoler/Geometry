@@ -1,0 +1,42 @@
+[CONSTANTS]
+
+% Situation A
+d14:=2.0
+d25:=2.0
+d36:=2.0
+ds:=3.0
+dq:=1.0
+phimin:=-(3.0*pi)/180
+phimax:=(3.0*pi)/180
+X1:=0
+Y1:=0
+X2:=ds
+Y2:=0
+X3:=ds/2
+Y3:=sin(pi/3)*ds
+
+[SYSTEM VARS]
+
+x4:[-d14,d14]
+y4:[-d14,d14]
+x5:[-d14-dq,d14+dq]
+y5:[-d14-dq,d14+dq]
+x6:[-d14-dq,d14+dq]
+y6:[-d14-dq,d14+dq]
+s1:[-1, 1]
+c1:[cos(phimin), 1]
+
+
+[SYSTEM EQS]
+
+% Distance equations
+x4^2+x5^2-2*x5*x4+y4^2+y5^2-2*y5*y4 = dq^2;
+X2^2+x5^2-2*x5*X2+Y2^2+y5^2-2*y5*Y2 = d25^2;
+X3^2+x6^2-2*x6*X3+Y3^2+y6^2-2*y6*Y3 = d36^2;
+x4^2+x6^2-2*x6*x4+y4^2+y6^2-2*y6*y4 = dq^2;
+x6^2+x5^2-2*x5*x6+y6^2+y5^2-2*y5*y6 = dq^2;
+x4 = d14*c1;
+y4 = d14*s1;
+
+% Circle equations
+s1^2+c1^2 = 1;
